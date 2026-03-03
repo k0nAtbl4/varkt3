@@ -24,8 +24,10 @@ v_y = 0
 curr_angle = 90
 M1 = 26200  # масса после полного расхода топлива
 M2 = 12200
-
+M3 = 11800
+M4 = 5800
 k = (M1 - M2) / 24
+k2 = (M3-M4) / 80
 m = M1
 
 
@@ -41,14 +43,16 @@ v_data = []
 m_data = []
 h_data = []
 t_data = []
-
+a_data = []
 
 # массовый расход
 def get_m(t):
     if t < 24:
         return M1 - k*t
     else:
-        return 11000
+        return M3 - k2*(t-24)
+
+
 
 
 # давление атмосферы
@@ -150,7 +154,8 @@ while t < total_time:
     t_data.append(t)
     h_data.append(h)
     v_data.append(v)
-    m_data.append(a)
+    m_data.append(m)
+    a_data.append(a)
     t += dt
     # a_y = (thrust_y - drag_y - m * get_g(h)) / m
     if t < 30:
@@ -159,7 +164,7 @@ while t < total_time:
 
 
 # График 1 Высота
-def compare_graphics(times_ksp, h_ksp, speed_ksp):
+def compare_graphics(times_ksp, h_ksp, speed_ksp,m_ksp, a_ksp):
 
     plt.figure(figsize=(10, 6))
     plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")
@@ -178,10 +183,28 @@ def compare_graphics(times_ksp, h_ksp, speed_ksp):
     plt.ylabel("Скорость (м/с)")
     plt.title("Скорость ракеты")
     plt.grid(True)
-
+    # График 3 Масса
+    plt.figure(figsize=(10, 6))
+    plt.plot(t_data, m_data, label="МАТ МОДЕЛЬ")
+    plt.plot(times_ksp, m_ksp, label="ДАННЫЕ KSP")
+    plt.legend()
+    plt.xlabel("Время (с)")
+    plt.ylabel("Масса (т)")
+    plt.title("Масса ракеты")
+    plt.grid(True)
     plt.tight_layout()
     plt.show()
-
+    # График 4 Ускорение
+    plt.figure(figsize=(10, 6))
+    plt.plot(t_data, a_data, label="МАТ МОДЕЛЬ")
+    plt.plot(times_ksp, a_ksp, label="ДАННЫЕ KSP")
+    plt.legend()
+    plt.xlabel("Время (с)")
+    plt.ylabel("Ускорение (м/с^2)")
+    plt.title("Ускорение ракеты")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
 
 plt.figure(figsize=(10, 6))
 plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")

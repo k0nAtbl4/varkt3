@@ -30,6 +30,7 @@ class DataRecorder:
         print("Запись телеметрии остановлена")
 
     def _record(self):
+        speed = 0
         while not self.stop_event.is_set():
             try:
                 current_time = self.space_center.ut
@@ -42,7 +43,7 @@ class DataRecorder:
                 
                 # Высота
                 altitude = self.vessel.flight().mean_altitude
-                
+                acc = (self.vessel.flight(self.vessel.orbit.body.reference_frame).speed - speed) / self.interval
                 # СКОРОСТЬ - используем орбитальную скорость
                 orbit_frame = self.vessel.orbit.body.reference_frame
                 speed = self.vessel.flight(self.vessel.orbit.body.reference_frame).speed
@@ -55,7 +56,8 @@ class DataRecorder:
                     "time": elapsed_time,
                     "altitude": altitude,
                     "speed": speed,
-                    "mass": mass
+                    "mass": mass,
+                    "acceleration": acc,
                 })
                 
                 # Отладка - каждые 10 секунд

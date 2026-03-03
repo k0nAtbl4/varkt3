@@ -37,11 +37,12 @@ recorder.stop()
 ksp_times = [d["time"] - recorder.data[0]["time"] for d in recorder.data]
 ksp_altitudes = [d["altitude"] for d in recorder.data]
 ksp_speeds = [d["speed"] for d in recorder.data]
-ksp_masses = [d["mass"] / 1000 for d in recorder.data]
+ksp_masses = [d["mass"] for d in recorder.data]
+ksp_acc = [d["acceleration"] for d in recorder.data]
 
 from theory import compare_graphics
 
-compare_graphics(ksp_times, ksp_altitudes, ksp_speeds, ksp_masses)
+compare_graphics(ksp_times, ksp_altitudes, ksp_speeds, ksp_masses,ksp_acc)
 
 
 # сброс спутника
