@@ -41,7 +41,7 @@ ksp_masses = [d["mass"] / 1000 for d in recorder.data]
 
 from theory import compare_graphics
 
-compare_graphics(ksp_times, ksp_altitudes, ksp_speeds)
+compare_graphics(ksp_times, ksp_altitudes, ksp_speeds, ksp_masses)
 
 
 # сброс спутника
