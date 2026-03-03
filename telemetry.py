@@ -45,7 +45,7 @@ class DataRecorder:
                 
                 # СКОРОСТЬ - используем орбитальную скорость
                 orbit_frame = self.vessel.orbit.body.reference_frame
-                speed = self.vessel.flight(orbit_frame).speed
+                speed = self.vessel.flight(self.vessel.orbit.body.reference_frame).speed
                 
                 # Масса
                 mass = self.vessel.mass
