@@ -8,11 +8,11 @@ G = 6.67408 * 10 ** (-11)
 M = 5.29 * 10**22
 r = 6 * 10**5
 dt = 0.1
-total_time = 300
+total_time = 250
 p0 = 101325
 H = 5000
-drag_coef = 0.4
-area = 10
+drag_coef = 0.6
+area = 4
 
 # начальные условия
 t = 0
@@ -50,8 +50,10 @@ def get_m(t):
     if t < 24:
         return M1 - k*t
     else:
-        return M3 - k2*(t-24)
-
+        if t<100:
+            return M3 - k2*(t-24)
+        else:
+            return 11000
 
 
 
@@ -102,12 +104,12 @@ def get_thrust(t, h):
         thrust = Pn_1 - Sa_1 * p_a(h)
     # elif t < 26:
     #     return 0
-    elif h < 45000:
+    elif h < 40000:
         thrust = Pn_2 - Sa_2 * p_a(h)
-    elif h > 45000 and h < 72000:
+    elif h > 40000 and h < 70000:
         thrust = 0
-    elif h > 72000:
-        thrust = (Pn_2 - Sa_2 * p_a(h)) * 0.4
+    elif h > 70000:
+        thrust = (Pn_2 - Sa_2 * p_a(h)) * 0.6
     return max(0, thrust)
 
 
