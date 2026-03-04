@@ -12,7 +12,7 @@ total_time = 250
 p0 = 101325
 H = 5000
 drag_coef = 0.6
-area = 4
+area = 4.5
 
 # начальные условия
 t = 0
@@ -53,7 +53,7 @@ def get_m(t):
         if t<100:
             return M3 - k2*(t-24)
         else:
-            return 11000
+            return 5800
 
 
 
@@ -167,63 +167,63 @@ while t < total_time:
 
 # График 1 Высота
 def compare_graphics(times_ksp, h_ksp, speed_ksp,m_ksp, a_ksp):
+    print()
+    # plt.figure(figsize=(10, 6))
+    # plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")
+    # plt.plot(times_ksp, h_ksp, label="ДАННЫЕ KSP")
+    # plt.legend()
+    # plt.xlabel("Время (с)")
+    # plt.ylabel("Высота (м)")
+    # plt.title("Высота ракеты")
+    # plt.grid(True)
+    # # График 2 Скорость
+    # plt.figure(figsize=(10, 6))
+    # plt.plot(t_data, v_data, label="МАТ МОДЕЛЬ")
+    # plt.plot(times_ksp, speed_ksp, label="ДАННЫЕ KSP")
+    # plt.legend()
+    # plt.xlabel("Время (с)")
+    # plt.ylabel("Скорость (м/с)")
+    # plt.title("Скорость ракеты")
+    # plt.grid(True)
+    # # График 3 Масса
+    # plt.figure(figsize=(10, 6))
+    # plt.plot(t_data, m_data, label="МАТ МОДЕЛЬ")
+    # plt.plot(times_ksp, m_ksp, label="ДАННЫЕ KSP")
+    # plt.legend()
+    # plt.xlabel("Время (с)")
+    # plt.ylabel("Масса (т)")
+    # plt.title("Масса ракеты")
+    # plt.grid(True)
+    # plt.tight_layout()
+    # plt.show()
+    # # График 4 Ускорение
+    # plt.figure(figsize=(10, 6))
+    # plt.plot(t_data, a_data, label="МАТ МОДЕЛЬ")
+    # plt.plot(times_ksp, a_ksp, label="ДАННЫЕ KSP")
+    # plt.legend()
+    # plt.xlabel("Время (с)")
+    # plt.ylabel("Ускорение (м/с^2)")
+    # plt.title("Ускорение ракеты")
+    # plt.grid(True)
+    # plt.tight_layout()
+    # plt.show()
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")
-    plt.plot(times_ksp, h_ksp, label="ДАННЫЕ KSP")
-    plt.legend()
-    plt.xlabel("Время (с)")
-    plt.ylabel("Высота (м)")
-    plt.title("Высота ракеты")
-    plt.grid(True)
-    # График 2 Скорость
-    plt.figure(figsize=(10, 6))
-    plt.plot(t_data, v_data, label="МАТ МОДЕЛЬ")
-    plt.plot(times_ksp, speed_ksp, label="ДАННЫЕ KSP")
-    plt.legend()
-    plt.xlabel("Время (с)")
-    plt.ylabel("Скорость (м/с)")
-    plt.title("Скорость ракеты")
-    plt.grid(True)
-    # График 3 Масса
-    plt.figure(figsize=(10, 6))
-    plt.plot(t_data, m_data, label="МАТ МОДЕЛЬ")
-    plt.plot(times_ksp, m_ksp, label="ДАННЫЕ KSP")
-    plt.legend()
-    plt.xlabel("Время (с)")
-    plt.ylabel("Масса (т)")
-    plt.title("Масса ракеты")
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-    # График 4 Ускорение
-    plt.figure(figsize=(10, 6))
-    plt.plot(t_data, a_data, label="МАТ МОДЕЛЬ")
-    plt.plot(times_ksp, a_ksp, label="ДАННЫЕ KSP")
-    plt.legend()
-    plt.xlabel("Время (с)")
-    plt.ylabel("Ускорение (м/с^2)")
-    plt.title("Ускорение ракеты")
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-
-plt.figure(figsize=(10, 6))
-plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")
-plt.plot([], [], label="ДАННЫЕ KSP")
-plt.legend()
-plt.xlabel("Время (с)")
-plt.ylabel("Высота (м)")
-plt.title("Высота ракеты")
-plt.grid(True)
-# График 2 Скорость
-plt.figure(figsize=(10, 6))
-plt.plot(t_data, v_data, label="МАТ МОДЕЛЬ")
-plt.plot([], [], label="ДАННЫЕ KSP")
-plt.legend()
-plt.xlabel("Время (с)")
-plt.ylabel("Скорость (м/с)")
-plt.title("Скорость ракеты")
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.plot(t_data, h_data, label="МАТ МОДЕЛЬ")
+# plt.plot([], [], label="ДАННЫЕ KSP")
+# plt.legend()
+# plt.xlabel("Время (с)")
+# plt.ylabel("Высота (м)")
+# plt.title("Высота ракеты")
+# plt.grid(True)
+# # График 2 Скорость
+# plt.figure(figsize=(10, 6))
+# plt.plot(t_data, v_data, label="МАТ МОДЕЛЬ")
+# plt.plot([], [], label="ДАННЫЕ KSP")
+# plt.legend()
+# plt.xlabel("Время (с)")
+# plt.ylabel("Скорость (м/с)")
+# plt.title("Скорость ракеты")
+# plt.grid(True)
+# plt.tight_layout()
+# plt.show()

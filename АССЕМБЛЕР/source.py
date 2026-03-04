@@ -18,6 +18,8 @@ vessel = space_center.active_vessel
 print(f"ПОДКЛЮЧИЛСЯ: {vessel.name}")
 print(f"МАССА: {vessel.mass:.1f} Т")
 
+time.sleep(7)
+
 args = [vessel]
 
 recorder = DataRecorder(vessel, space_center, interval=0.5)
