@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# from ksp_module import times_ksp, speeds_ksp, altitudes_ksp
 
-# параметры
+
+# константы
 G = 6.67408 * 10 ** (-11)
 M = 5.29 * 10**22
 r = 6 * 10**5
@@ -22,7 +22,7 @@ v = 0
 v_x = 0
 v_y = 0
 curr_angle = 90
-M1 = 26200  # масса после полного расхода топлива
+M1 = 26200  # начальная масса
 M2 = 12200
 M3 = 11800
 M4 = 5800
@@ -77,23 +77,17 @@ def get_angle(h):
     h1 = 200  # начало поворота
     h2 = 20000  # середина поворота
     h3 = 50000  # начало плавного выхода на 0
-    h4 = 75000  # полная горизонталь (было 71000)
-
+    h4 = 72000  # полная горизонталь 
     if h < h1:
         return 90
     elif h < h2:
         progress = (h - h1) / (h2 - h1)
-        # Нелинейное уменьшение: быстро вниз, потом плавно
         return 90 - 60 * (progress**1.5)
     elif h < h3:
         progress = (h - h2) / (h3 - h2)
-        # От 30° до 10° линейно
         return 30 - 20 * progress  # 30° → 10°
     elif h < h4:
-        # ПЛАВНЫЙ ПЕРЕХОД от 10° до 0° с использованием косинуса
         progress = (h - h3) / (h4 - h3)
-        # Косинус дает очень плавное начало и конец перехода
-        # 10° * cos(progress * π/2)
         return 12 * np.cos(progress * np.pi / 2)
     else:
         return 0
@@ -159,7 +153,7 @@ while t < total_time:
     m_data.append(m)
     a_data.append(a)
     t += dt
-    # a_y = (thrust_y - drag_y - m * get_g(h)) / m
+    
     if t < 30:
         print( round(t,2), round(a_y,2), round(thrust_y,2), round(drag_y,2),  round(m,2), round(get_g(h),2), round(get_density(h),2))
     
