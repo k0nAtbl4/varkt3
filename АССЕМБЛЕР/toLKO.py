@@ -79,7 +79,7 @@ def engage(vessel, space_center, connection, ascentProfileConstant=1.15):
 
     vessel.control.throttle = 0
 
-    # Запись потраченного Δv
+    # Запись потраченного dv
     final_speed = vessel.flight(vessel.orbit.body.reference_frame).speed
     print("Апогей: ", apoapsisStream())
     print("Перигей: ", periapsisStream())
